@@ -11,6 +11,18 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('blog\index');
 });
+
+Route::get('/post', function () {
+    return view('blog\post');
+});
+
+
+
+
