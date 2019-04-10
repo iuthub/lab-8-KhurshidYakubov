@@ -1,5 +1,5 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="btn btn-success">New Post</div>
+<a href="/admin/create"><div class="btn btn-success">New Post</div></a>
 @endsection

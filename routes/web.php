@@ -35,8 +35,11 @@ Route::get('/admin', function()
 Route::get('/admin/create', function()
 {
     return view('admin.create');
-});
+})->name('admin.create');
 
+//Route::get('/create', 'PostsController@store');
+
+Route::resource('post', 'PostsController');
 
 Route::get('/admin/edit', function()
 {
