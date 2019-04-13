@@ -8,7 +8,29 @@
     color: #F4645F;
 }
 
-a{
+.data-block a{
 	text-decoration: none;
 	color: #fff;
+}
+
+.data-block .btn-primary{
+	float: right;
+}
+
+.data-block .btn-danger{
+	float: right;
+	margin: 0 6px 0 10px;
+}
+
+.data-block .col-md-12 {
+    background: #d8d8d8;
+    padding: 10px 5px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.data-block .col-md-12 > p {
+
+	display: inline-block;
+    margin: 8px 10px 0 10px;
 }

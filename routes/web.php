@@ -15,9 +15,21 @@
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('blog\index');
-});
+// Route::get('/', function () {
+//     return view('blog\index');
+// });
+
+
+Route::get('/', [
+	'uses'=>'PostsController@index',
+	'as'=>'index'
+]);
+
+
+Route::get('/admin', [
+	'uses'=>'PostsController@adminIndex',
+	'as'=>'adminindex'
+]);
 
 Route::get('/post', function () {
     return view('blog\post');
@@ -27,10 +39,10 @@ Route::get('/about', function () {
     return view('others\about');
 });
 
-Route::get('/admin', function()
-{
-    return view('admin.index');
-});
+// Route::get('/admin', function()
+// {
+//     return view('admin.index');
+// });
 
 Route::get('/admin/create', function()
 {
@@ -41,12 +53,27 @@ Route::get('/admin/create', function()
 
 Route::resource('post', 'PostsController');
 
-Route::get('/admin/edit', function()
-{
-    return view('admin.edit');
-});
+// Route::get('/admin/edit', function()
+// {
+//     return view('admin.edit');
+// });
+
+Route::get('/delete/{id}', [
+	'uses'=>'PostsController@delete',
+	'as'=>'delete'
+]);
 
 
+Route::get('/edit/{id}', [
+	'uses'=>'PostsController@edit',
+	'as'=>'edit'
+]);
+
+
+Route::post('/edit', [
+	'uses'=>'PostsController@save',
+	'as'=>'edit_post'
+]);
 
 
 
