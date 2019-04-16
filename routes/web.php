@@ -31,13 +31,26 @@ Route::get('/admin', [
 	'as'=>'adminindex'
 ]);
 
-Route::get('/post', function () {
-    return view('blog\post');
-});
+
+
+
+// Route::get('/post', function () {
+//     return view('blog\post');
+// });
+
+
+Route::get('/post/{id}', [
+	'uses'=>'PostsController@show',
+	'as'=>'readmore'
+]);
+
 
 Route::get('/about', function () {
     return view('others\about');
 });
+
+
+
 
 // Route::get('/admin', function()
 // {

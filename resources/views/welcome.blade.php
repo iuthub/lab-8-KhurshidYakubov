@@ -35,7 +35,7 @@
         <div class="col-md-12 text-center">
             <h1 class="post-title">{{ $item->title }}</h1>
             <p>{{ $item->body }}</p>
-            <p><a href="#">Read more...</a></p>
+            <p><a href="{{route('readmore' , ['id'=>$item->id])}}">Read more...</a></p>
         </div>
     </div>
     <hr>

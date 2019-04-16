@@ -79,7 +79,9 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $article = posts::find($id);
+
+        return view('blog.post' , compact('article'));
     }
 
     /**
@@ -138,5 +140,15 @@ class PostsController extends Controller
         $post->delete();
 
         return redirect()->back()->with('info', 'Post deleted!');
+    }
+
+
+    public function postView($id)
+    {
+        $posts=posts::all();
+
+        return view('blog.post', [
+            'posts'=> $posts
+        ]);
     }
 }
