@@ -62,6 +62,8 @@ Route::get('/admin/create', function()
     return view('admin.create');
 })->name('admin.create');
 
+
+
 //Route::get('/create', 'PostsController@store');
 
 Route::resource('post', 'PostsController');
@@ -83,11 +85,17 @@ Route::get('/edit/{id}', [
 ]);
 
 
-Route::post('/edit', [
-	'uses'=>'PostsController@save',
-	'as'=>'edit_post'
-]);
+// Route::post('/edit', [
+// 	'uses'=>'PostsController@save',
+// 	'as'=>'edit_post'
+// ]);
 
+
+
+Route::any('/update/{id}', [
+	'uses'=>'PostsController@update',
+	'as'=>'update'
+]);
 
 
 

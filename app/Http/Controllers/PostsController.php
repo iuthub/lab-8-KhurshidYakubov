@@ -30,8 +30,8 @@ class PostsController extends Controller
 
         return view('admin.index', [
             'posts'=> $posts,
-            'edit_mode'=>0,
-            'edit_post'=>NULL
+            // 'edit_mode'=>0,
+            // 'edit_post'=>NULL
         ]);
     
     }
@@ -43,7 +43,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+       // return view('admin.create');
     }
 
     /**
@@ -92,27 +92,31 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $posts=posts::all();
-        $edit_post=posts::find($id);
+        // $posts=posts::all();
+        // $edit_post=posts::find($id);
 
-        return view('admin.edit', [
-            'posts'=> $posts,
-            'edit_mode'=>1,
-            'edit_post'=>$edit_post
-        ]);
+        // return view('admin.edit', [
+        //     'posts'=> $posts,
+        //     'edit_mode'=>1,
+        //     'edit_post'=>$edit_post
+        // ]);
        // return redirect()->route('admin.edit')->with('info', 'Post deleted!');
+         $article = posts::find($id);
+
+        return view('admin.edit' , compact('article'));
+
     }
 
 
 
      public function save(Request $req){
-        $post=posts::find($req->input('id'));
-        $post->body=$req->input('body');
+        // $post=posts::find($req->input('id'));
+        // $post->body=$req->input('body');
 
-        $post->save();
+        // $post->save();
 
 
-        return redirect()->route('admin.index')->with('info', 'Post updated!');
+        // return redirect()->route('admin.index')->with('info', 'Post updated!');
     }
 
     /**
@@ -124,7 +128,18 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $this->validate($request,[
+            'title'  =>   'required',
+            'body'   =>   'required'
+        ]);
+
+          $post = posts::find($id);
+        $post->title = $request->get('title');
+        $post->body = $request->get('body');
+
+        $post->save();
+
+        return redirect()->route('admin.edit')->with('success', 'Data Updated');
     }
 
     /**
