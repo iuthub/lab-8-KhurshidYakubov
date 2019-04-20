@@ -16,11 +16,7 @@ class PostsController extends Controller
     {
             $posts=posts::all();
 
-        return view('welcome', [
-            'posts'=> $posts,
-            // 'edit_mode'=>0,
-            // 'edit_post'=>NULL
-        ]);
+        return view('welcome', ['posts'=> $posts]);
     
     }
 
@@ -28,11 +24,7 @@ class PostsController extends Controller
     {
             $posts=posts::all();
 
-        return view('admin.index', [
-            'posts'=> $posts,
-            // 'edit_mode'=>0,
-            // 'edit_post'=>NULL
-        ]);
+        return view('admin.index', ['posts'=> $posts]);
     
     }
 
@@ -68,7 +60,7 @@ class PostsController extends Controller
 
         $post->save();
 
-        return redirect()->route('admin.create')->with('success', 'Data Added');
+        return redirect()->route('admin')->with('success', 'Data Added');
     }
 
     /**
@@ -92,16 +84,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        // $posts=posts::all();
-        // $edit_post=posts::find($id);
-
-        // return view('admin.edit', [
-        //     'posts'=> $posts,
-        //     'edit_mode'=>1,
-        //     'edit_post'=>$edit_post
-        // ]);
-       // return redirect()->route('admin.edit')->with('info', 'Post deleted!');
-         $article = posts::find($id);
+       
+        $article = posts::find($id);
 
         return view('admin.edit' , compact('article'));
 
@@ -139,7 +123,7 @@ class PostsController extends Controller
 
         $post->save();
 
-        return redirect()->route('admin.edit')->with('success', 'Data Updated');
+        return redirect()->route('admin')->with('success', 'Data Updated');
     }
 
     /**
@@ -150,7 +134,7 @@ class PostsController extends Controller
      */
     public function delete($id)
     {
-        $post=posts::find($id); //$post=Post::where('id','=', $id)->orderBy('id', 'desc')->first()
+        $post=posts::find($id); 
 
         $post->delete();
 
@@ -158,12 +142,4 @@ class PostsController extends Controller
     }
 
 
-    public function postView($id)
-    {
-        $posts=posts::all();
-
-        return view('blog.post', [
-            'posts'=> $posts
-        ]);
-    }
 }

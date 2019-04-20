@@ -11,32 +11,13 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::get('/', function () {
-//     return view('blog\index');
-// });
-
-
 Route::get('/', [
 	'uses'=>'PostsController@index',
 	'as'=>'index'
 ]);
 
 
-Route::get('/admin', [
-	'uses'=>'PostsController@adminIndex',
-	'as'=>'adminindex'
-]);
-
-
-
-
-// Route::get('/post', function () {
-//     return view('blog\post');
-// });
+Route::get('/admin' , 'PostsController@adminIndex')->name('admin');
 
 
 Route::get('/post/{id}', [
@@ -51,27 +32,16 @@ Route::get('/about', function () {
 
 
 
-
-// Route::get('/admin', function()
-// {
-//     return view('admin.index');
-// });
-
 Route::get('/admin/create', function()
 {
     return view('admin.create');
+
 })->name('admin.create');
 
 
 
-//Route::get('/create', 'PostsController@store');
-
 Route::resource('post', 'PostsController');
 
-// Route::get('/admin/edit', function()
-// {
-//     return view('admin.edit');
-// });
 
 Route::get('/delete/{id}', [
 	'uses'=>'PostsController@delete',
@@ -85,17 +55,13 @@ Route::get('/edit/{id}', [
 ]);
 
 
-// Route::post('/edit', [
-// 	'uses'=>'PostsController@save',
-// 	'as'=>'edit_post'
-// ]);
-
-
 
 Route::any('/update/{id}', [
 	'uses'=>'PostsController@update',
 	'as'=>'update'
 ]);
+
+
 
 
 
